@@ -12,7 +12,7 @@ const useGoogleSearch = (term) => {
     const fetchData = async () => {
       try {
         await fetch(
-          `https://www.googleapis.com/customsearch/v1/?key=${API_KEY}&cx=${CONTEXT_KEY}&q=${term}`
+          `https://www.googleapis.com/customsearch/v1/siterestrict?key=${API_KEY}&cx=${CONTEXT_KEY}&q=${term}`
         )
           .then((response) => {
             if (response.ok) {

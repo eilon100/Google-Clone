@@ -126,7 +126,12 @@ function SearchPage() {
       ) : (
         <div className="searchPage__results">
           <p className="searchPAge__resultCount">
-            Error number {error == 429 ? " 429 Too Many Requests" : error}
+            {
+              (error == 429
+                ? "Error number 429 Too Many Requests"
+                : "Error number",
+              error)
+            }
           </p>
         </div>
       )}
