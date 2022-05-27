@@ -18,7 +18,7 @@ const Languages = {
     clear: "clear",
   },
   hebrew: {
-    searchBTN: " Goggle-חיפוש ב",
+    searchBTN: " Google-חיפוש ב",
     luckyBTN: "יותר מזל משכל",
     LanguageAvailability: ":זמינה ב Google",
     photo: "חיפוש תמונות",

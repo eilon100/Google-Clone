@@ -143,7 +143,10 @@ function Search({ hideButtons = false }) {
             </div>
           ) : (
             <div className="search__buttons">
-              <a href="https://www.google.com/doodles">
+              <a
+                href="https://www.google.com/doodles"
+                style={{ textDecoration: "none" }}
+              >
                 <Button variant="outlined">
                   {Languages[state.lang].luckyBTN}
                 </Button>
