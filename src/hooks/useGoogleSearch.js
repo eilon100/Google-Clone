@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import API_KEY from "../keys/key";
 
-const CONTEXT_KEY = "eaf3d80a3c0b0e873";
+const API_KEY = process.env.REACT_APP_API_KEY;
+const CONTEXT_KEY = process.env.REACT_APP_CONTEXT_KEY;
 
 //the costume hook for fetch data
 const useGoogleSearch = (term) => {

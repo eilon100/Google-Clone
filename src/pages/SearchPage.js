@@ -20,6 +20,39 @@ function SearchPage() {
   const navigate = useNavigate();
   const { state, dispatch } = useStateValue();
 
+  const searchPageOptions = [
+    {
+      href: "",
+      style: { color: "#8ab4f8" },
+      iconName: Languages[state.lang].all,
+      icon: <SearchIcon style={{ color: "#8ab4f8" }} />,
+    },
+    {
+      href: `https://www.google.com/search?q=${state.inputState}&sxsrf=ALiCzsYIMaBw7nE2ZLnq2yv7aEBB7Z2-ug:1653578488233&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjzpJjzu_33AhVOgf0HHQXDD0EQ_AUoAXoECAIQAw&biw=1591&bih=1279&dpr=1`,
+      iconName: Languages[state.lang].photo,
+      icon: <PhotoCameraBackIcon />,
+    },
+    {
+      href: `https://www.google.com/search?q=${state.inputState}&source=lmns&tbm=nws&bih=1279&biw=1591&hl=iw&sa=X&ved=2ahUKEwj5v539u_33AhUH8hoKHeIjD_oQ_AUoAnoECAEQAg`,
+      iconName: Languages[state.lang].news,
+      icon: <ArticleIcon />,
+    },
+    {
+      href: `https://www.google.com/search?q=${state.inputState}&hl=iw&tbm=vid&sxsrf=ALiCzsbDoBkBpaSzUsopKpJr9jzU6h8x_w:1653578543176&source=lnms&sa=X&ved=2ahUKEwjw-bGNvP33AhUVQUEAHds2CPwQ_AUoA3oECAEQBQ&biw=1591&bih=1279&dpr=1`,
+      iconName: Languages[state.lang].videos,
+      icon: <OndemandVideoIcon />,
+    },
+    {
+      href: `https://www.google.com/maps/search/${state.inputState}/@28.6945974,54.0353073,5z/data=!3m1!4b1?hl=iw`,
+      iconName: Languages[state.lang].maps,
+      icon: <AddLocationAltIcon />,
+    },
+    {
+      href: "/",
+      iconName: Languages[state.lang].more,
+      icon: <MoreVertIcon />,
+    },
+  ];
   //costume hook for fetch the search data
   const { data, error } = useGoogleSearch(state.inputState);
 
@@ -47,7 +80,6 @@ function SearchPage() {
         </div>
         <div className="searchPage__headerRight">
           <Search hideButtons={true} />
-
           <img
             src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_light_color_92x30dp.png"
             className="search__img"
@@ -57,49 +89,19 @@ function SearchPage() {
         </div>
       </div>
       <div className="searchPage__options">
-        <div className="searchPage__option">
-          <a href="" style={{ color: "#8ab4f8" }}>
-            {Languages[state.lang].all}
-          </a>
-          <SearchIcon style={{ color: "#8ab4f8" }} />
-        </div>
-        <div className="searchPage__option">
-          <a
-            href={`https://www.google.com/search?q=${state.inputState}&sxsrf=ALiCzsYIMaBw7nE2ZLnq2yv7aEBB7Z2-ug:1653578488233&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjzpJjzu_33AhVOgf0HHQXDD0EQ_AUoAXoECAIQAw&biw=1591&bih=1279&dpr=1`}
-          >
-            {Languages[state.lang].photo}
-          </a>
-          <PhotoCameraBackIcon />
-        </div>
-
-        <div className="searchPage__option">
-          <a
-            href={`https://www.google.com/search?q=${state.inputState}&source=lmns&tbm=nws&bih=1279&biw=1591&hl=iw&sa=X&ved=2ahUKEwj5v539u_33AhUH8hoKHeIjD_oQ_AUoAnoECAEQAg`}
-          >
-            {Languages[state.lang].news}
-          </a>
-          <ArticleIcon />
-        </div>
-        <div className="searchPage__option">
-          <a
-            href={`https://www.google.com/search?q=${state.inputState}&hl=iw&tbm=vid&sxsrf=ALiCzsbDoBkBpaSzUsopKpJr9jzU6h8x_w:1653578543176&source=lnms&sa=X&ved=2ahUKEwjw-bGNvP33AhUVQUEAHds2CPwQ_AUoA3oECAEQBQ&biw=1591&bih=1279&dpr=1`}
-          >
-            {Languages[state.lang].videos}
-          </a>
-          <OndemandVideoIcon />
-        </div>
-        <div className="searchPage__option">
-          <a
-            href={`https://www.google.com/maps/search/${state.inputState}/@28.6945974,54.0353073,5z/data=!3m1!4b1?hl=iw`}
-          >
-            {Languages[state.lang].maps}
-          </a>
-          <AddLocationAltIcon />
-        </div>
-        <div className="searchPage__option">
-          <a to="/">{Languages[state.lang].more}</a>
-          <MoreVertIcon />
-        </div>
+        {searchPageOptions.map((item, i) => {
+          return (
+            <div className="searchPage__option">
+              <a
+                href={searchPageOptions[i].href}
+                style={searchPageOptions[i].style}
+              >
+                {searchPageOptions[i].iconName}
+              </a>
+              {searchPageOptions[i].icon}
+            </div>
+          );
+        })}
         <div className="searchPage__optionLeft">
           {Languages[state.lang].tools}
         </div>
